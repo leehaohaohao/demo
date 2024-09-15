@@ -3,7 +3,6 @@ package com.lihao.demo;
 import com.lihao.demo.api_usage.base.MonitorApiUsage;
 import com.lihao.demo.current_limiting.base.CurrentLimiting;
 import com.lihao.demo.context.pack.ResponsePack;
-import com.lihao.demo.current_limiting.base.DefaultStrategy;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +35,16 @@ public class DemoController {
             ,strategyName = "SlideWindowStrategy")
     @MonitorApiUsage(enableHandTrembling = false)
     public ResponsePack<String> slideWindow(){
+        ResponsePack<String> responsePack = new ResponsePack<>();
+        responsePack.setData("success");
+        responsePack.setSuccess(true);
+        return responsePack;
+    }
+    @RequestMapping("/leakyBucket")
+    @CurrentLimiting(keyType = CurrentLimiting.KeyType.ALL
+            ,strategyName = "LeakyBucketStrategy")
+    @MonitorApiUsage(enableHandTrembling = false)
+    public ResponsePack<String> leakyBucket(){
         ResponsePack<String> responsePack = new ResponsePack<>();
         responsePack.setData("success");
         responsePack.setSuccess(true);

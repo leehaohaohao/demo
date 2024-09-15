@@ -23,6 +23,9 @@ D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\DefaultStr
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\fixed_window\FixedWindowDto.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\fixed_window\FixedWindowManager.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\fixed_window\FixedWindowStrategy.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketDto.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketManager.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketStrategy.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\slide_window\SlideWindowDto.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\slide_window\SlideWindowManager.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\slide_window\SlideWindowStrategy.java

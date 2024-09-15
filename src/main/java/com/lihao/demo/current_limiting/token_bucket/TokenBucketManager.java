@@ -1,13 +1,11 @@
 package com.lihao.demo.current_limiting.token_bucket;
 
-import com.lihao.demo.context.exception.GlobalException;
 import com.lihao.demo.current_limiting.base.BaseManager;
-import com.lihao.demo.lock.Lock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * 令牌桶管理
  * @author lihao
@@ -39,7 +37,7 @@ public class TokenBucketManager implements BaseManager<String, TokenBucketDto> {
     public void deductionToken(String key, int permits) {
         TokenBucketDto tokenBucket = tokenBucketMap.get(key);
         if (tokenBucket != null) {
-            tokenBucket.deductionToken(permits);
+            tokenBucket.deduction(permits);
         }
     }
 }

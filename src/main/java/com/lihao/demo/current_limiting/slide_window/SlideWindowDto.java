@@ -24,7 +24,7 @@ public class SlideWindowDto extends CurrentLimitingDTO {
     }
     @Override
     public boolean tryAcquire(int permits) {
-        refillTokens();
+        refill();
         return permits + getTokens() <= count;
     }
     private int getTokens(){
@@ -35,13 +35,13 @@ public class SlideWindowDto extends CurrentLimitingDTO {
         return result;
     }
     @Override
-    public void deductionToken(int permits) {
+    public void deduction(int permits) {
         long currentTime = System.currentTimeMillis();
         buckets[(int) ((currentTime / (realTime / bucketCount)) % bucketCount)] += permits;
     }
 
     @Override
-    protected void refillTokens() {
+    protected void refill() {
         long currentTime = System.currentTimeMillis();
         long elapsedTime = currentTime - lastRefillTime;
         if(elapsedTime >= realTime){

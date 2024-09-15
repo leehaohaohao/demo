@@ -11,7 +11,7 @@ import com.lihao.demo.context.exception.GlobalException;
  */
 public interface BaseManager<K,T> {
     void create(K key,T dto);
-    void deductionToken(K key, int permits);
     void remove(K key);
     boolean tryAcquire(K key, int permits);
+    void deductionToken(K key, int permits);
 }

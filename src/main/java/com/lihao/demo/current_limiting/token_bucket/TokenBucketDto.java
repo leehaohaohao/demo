@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.locks.ReentrantLock;
-
 /**
  * 令牌桶DTO
  * @author lihao
@@ -38,16 +36,16 @@ public class TokenBucketDto extends CurrentLimitingDTO {
      */
     @Override
     public boolean tryAcquire(int permits) {
-        refillTokens();
+        refill();
         log.debug("当前令牌数量为：{}",tokens);
         return tokens > permits;
     }
     @Override
-    public void deductionToken(int permits) {
-        tokens -= permits;
+    public void deduction(int permits) {
+        if (tokens >= permits) tokens -= permits;
     }
     @Override
-    protected void refillTokens() {
+    protected void refill() {
         long currentTime = System.currentTimeMillis();
         long elapsedTime = currentTime - lastRefillTime;
         double refillAmount = elapsedTime * refillRate / 1000;

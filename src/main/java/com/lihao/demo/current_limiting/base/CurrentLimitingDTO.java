@@ -50,9 +50,9 @@ public abstract class CurrentLimitingDTO {
      * 占用permits个位置
      * @param permits 占用数量
      */
-    public abstract void deductionToken(int permits);
+    public abstract void deduction(int permits);
     /**
      * 释放或添加位置
      */
-    protected abstract void refillTokens();
+    protected abstract void refill();
 }

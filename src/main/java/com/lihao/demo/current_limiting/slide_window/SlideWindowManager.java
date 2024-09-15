@@ -32,7 +32,7 @@ public class SlideWindowManager implements BaseManager<String, SlideWindowDto> {
     @Override
     public void deductionToken(String key, int permits) {
         if(slideWindowMap.containsKey(key)){
-            slideWindowMap.get(key).deductionToken(permits);
+            slideWindowMap.get(key).deduction(permits);
         }
     }
 }

@@ -1,11 +1,10 @@
 package com.lihao.demo.current_limiting.fixed_window;
 
-import com.lihao.demo.context.exception.GlobalException;
 import com.lihao.demo.current_limiting.base.BaseManager;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
+
 /**
  * 固定窗口限流管理器
  * @author lihao
@@ -33,7 +32,7 @@ public class FixedWindowManager implements BaseManager<String,FixedWindowDto> {
     @Override
     public void deductionToken(String key, int permits) {
         if(fixedWindowMap.containsKey(key)){
-            fixedWindowMap.get(key).deductionToken(permits);
+            fixedWindowMap.get(key).deduction(permits);
         }
     }
 }

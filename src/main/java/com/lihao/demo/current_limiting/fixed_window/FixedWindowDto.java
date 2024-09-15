@@ -23,17 +23,17 @@ public class FixedWindowDto extends CurrentLimitingDTO {
     @Override
     public boolean tryAcquire(int permits){
         log.debug("当前时间：{}，上次补充令牌的时间：{}，当前令牌数：{}，需要补充的令牌数：{}",System.currentTimeMillis(),lastRefillTime,tokens,permits);
-        refillTokens();
+        refill();
         log.debug("当前时间：{}，当前令牌数：{}",System.currentTimeMillis(),tokens);
         return tokens>=permits;
     }
     @Override
-    public void deductionToken(int permits){
+    public void deduction(int permits){
         tokens-=permits;
     }
 
     @Override
-    protected void refillTokens() {
+    protected void refill() {
         long currentTime = System.currentTimeMillis();
         if(currentTime-lastRefillTime>=unit.toMillis(time)){
             tokens=count;
