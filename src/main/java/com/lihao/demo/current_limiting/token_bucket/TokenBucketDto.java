@@ -3,6 +3,7 @@ package com.lihao.demo.current_limiting.token_bucket;
 import com.lihao.demo.current_limiting.base.CurrentLimitingDTO;
 import com.lihao.demo.context.exception.GlobalException;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.locks.ReentrantLock;
@@ -13,6 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * &#064;date  2024/9/12
  * @since 1.0
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Slf4j
 public class TokenBucketDto extends CurrentLimitingDTO {
