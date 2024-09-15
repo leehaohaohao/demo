@@ -22,7 +22,6 @@ public class TokenBucketDto extends CurrentLimitingDTO {
     private final double refillRate; // 每秒补充的令牌数
     private double tokens; // 当前令牌数量
     private long lastRefillTime; // 上次补充令牌的时间
-    private final ReentrantLock lock = new ReentrantLock();//锁 为令牌桶发送、增添令牌加锁
     public TokenBucketDto(long capacity, double refillRate) throws GlobalException {
         if(capacity <= 0 || refillRate <= 0){
             throw new GlobalException("令牌桶参数错误");
@@ -39,32 +38,22 @@ public class TokenBucketDto extends CurrentLimitingDTO {
      */
     @Override
     public boolean tryAcquire(int permits) {
-        lock.lock();
-        try {
-            refillTokens();
-            log.info("当前令牌数量为：{}",tokens);
-            return tokens > permits;
-        } finally {
-            lock.unlock();
-        }
+        refillTokens();
+        log.debug("当前令牌数量为：{}",tokens);
+        return tokens > permits;
     }
     @Override
     public void deductionToken(int permits) {
-        lock.lock();
-        try {
-            tokens -= permits;
-        } finally {
-            lock.unlock();
-        }
+        tokens -= permits;
     }
     @Override
     protected void refillTokens() {
         long currentTime = System.currentTimeMillis();
         long elapsedTime = currentTime - lastRefillTime;
         double refillAmount = elapsedTime * refillRate / 1000;
-        log.info("当前添加的令牌数为：{}",refillAmount);
+        log.debug("当前添加的令牌数为：{}",refillAmount);
         tokens = Math.min(capacity, tokens + refillAmount);
-        log.info("添加后的令牌数量为：{}",tokens);
+        log.debug("添加后的令牌数量为：{}",tokens);
         lastRefillTime = currentTime;
     }
 }

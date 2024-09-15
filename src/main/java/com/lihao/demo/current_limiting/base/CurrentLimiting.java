@@ -42,7 +42,11 @@ public @interface CurrentLimiting {
      * @return 限流时间范围
      */
     long time() default 1;
-
+    /**
+     * 滑动窗口分割的块数 默认1
+     * @return 滑动窗口分割的块数
+     */
+    int bucketCount() default 10;
     /**
      * 时间单位 默认秒
      * @return 时间单位

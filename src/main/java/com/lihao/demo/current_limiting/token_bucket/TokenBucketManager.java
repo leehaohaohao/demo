@@ -1,6 +1,8 @@
 package com.lihao.demo.current_limiting.token_bucket;
 
 import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.current_limiting.base.BaseManager;
+import com.lihao.demo.lock.Lock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -14,28 +16,13 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 @Component
 @Slf4j
-public class TokenBucketManager {
+public class TokenBucketManager implements BaseManager<String, TokenBucketDto> {
     private final ConcurrentHashMap<String, TokenBucketDto> tokenBucketMap = new ConcurrentHashMap<>();
-    private final ReentrantLock lock = new ReentrantLock();
-    public void createTokenBucket(String key, long capacity, double refillRate) throws GlobalException {
-        lock.lock();
-        try {
-            if (!tokenBucketMap.containsKey(key)) {
-                TokenBucketDto tokenBucket = new TokenBucketDto(capacity, refillRate);
-                tokenBucketMap.put(key, tokenBucket);
-            }
-        } finally {
-            lock.unlock();
-        }
+    @Override
+    public void remove(String key) {
+        tokenBucketMap.remove(key);
     }
-    public void removeTokenBucket(String key) {
-        lock.lock();
-        try {
-            tokenBucketMap.remove(key);
-        } finally {
-            lock.unlock();
-        }
-    }
+    @Override
     public boolean tryAcquire(String key, int permits) {
         TokenBucketDto tokenBucket = tokenBucketMap.get(key);
         if (tokenBucket != null) {
@@ -44,6 +31,11 @@ public class TokenBucketManager {
         return false;
     }
 
+    @Override
+    public void create(String key, TokenBucketDto tokenBucketDto){
+        tokenBucketMap.computeIfAbsent(key, k -> tokenBucketDto);
+    }
+    @Override
     public void deductionToken(String key, int permits) {
         TokenBucketDto tokenBucket = tokenBucketMap.get(key);
         if (tokenBucket != null) {

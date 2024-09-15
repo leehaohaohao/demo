@@ -10,7 +10,8 @@ import lombok.Getter;
 @Getter
 public enum DefaultStrategy {
     TokenBucketStrategy("TokenBucketStrategy"),
-    TimerStrategy("TimerStrategy");
+    FixedWindowStrategy("FixedWindowStrategy"),
+    SlideWindowStrategy("SlideWindowStrategy");
     private final String strategyName;
     DefaultStrategy(String strategyName) {
         this.strategyName = strategyName;

@@ -29,6 +29,9 @@ public abstract class CurrentLimitingDTO {
      */
     protected TimeUnit unit;
     public CurrentLimitingDTO(Integer count,long time, TimeUnit unit){
+        if(count<=0 || time<=0 || unit==null){
+            throw new RuntimeException("参数错误");
+        }
         this.count=count;
         this.time=time;
         this.unit=unit;

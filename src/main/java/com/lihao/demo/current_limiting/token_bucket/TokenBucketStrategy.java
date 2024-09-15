@@ -5,6 +5,7 @@ import com.lihao.demo.current_limiting.base.AbstractCurrentLimitingStrategy;
 import com.lihao.demo.current_limiting.base.CurrentLimiting;
 import com.lihao.demo.current_limiting.base.DefaultStrategy;
 import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.lock.Lock;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 令牌桶限流策略
@@ -27,11 +29,13 @@ import java.util.Map;
 public class TokenBucketStrategy extends AbstractCurrentLimitingStrategy<TokenBucketDto> {
     private final TokenBucketManager tokenBucketManager;
     @Override
+    @Lock(key = "tokenBucket")
     protected Object executeWitheCurrentLimitings(Map<String, CurrentLimiting> keyMap, ProceedingJoinPoint joinPoint) throws Throwable {
         Map<String, TokenBucketDto> tokenBucketDtoMap = new HashMap<>();
         for (Map.Entry<String, CurrentLimiting> entry : keyMap.entrySet()) {
-            tokenBucketDtoMap.put(entry.getKey(), new TokenBucketDto(entry.getValue().capacity(), entry.getValue().rate()));
-            tokenBucketManager.createTokenBucket(entry.getKey(), entry.getValue().capacity(), entry.getValue().rate());
+            TokenBucketDto tokenBucketDto = new TokenBucketDto(entry.getValue().capacity(), entry.getValue().rate());
+            tokenBucketDtoMap.put(entry.getKey(), tokenBucketDto);
+            tokenBucketManager.create(entry.getKey(), tokenBucketDto);
         }
         if(isLimit(tokenBucketDtoMap)){
             throw new GlobalException(ErrorConstants.CURRENT_LIMITING_ERROR);
@@ -43,21 +47,14 @@ public class TokenBucketStrategy extends AbstractCurrentLimitingStrategy<TokenBu
 
     @Override
     protected boolean isLimit(Map<String, TokenBucketDto> tokenBucketDtoMap) {
-        List<String> keyList = new ArrayList<>(tokenBucketDtoMap.keySet());
-        for(String key:keyList){
-            log.info("key:{},value:{}",key,tokenBucketDtoMap.get(key));
-            if(!tokenBucketManager.tryAcquire(key,1)){
-                return true;
-            }
-        }
-        return false;
+        return tokenBucketDtoMap.keySet()
+                .stream()
+                .anyMatch(key -> !tokenBucketManager.tryAcquire(key, 1));
     }
 
     @Override
     protected void addLimit(Map<String, TokenBucketDto> tokenBucketDtoMap) {
-        for(String key:tokenBucketDtoMap.keySet()){
-            tokenBucketManager.deductionToken(key,1);
-        }
+        tokenBucketDtoMap.keySet().forEach(key->tokenBucketManager.deductionToken(key,1));
     }
     @Override
     protected String getStrategyName() {

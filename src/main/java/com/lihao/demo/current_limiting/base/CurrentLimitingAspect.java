@@ -1,7 +1,6 @@
 package com.lihao.demo.current_limiting.base;
 
 import com.lihao.demo.context.user.ContextInfo;
-import com.lihao.demo.context.user.DefaultContext;
 import com.lihao.demo.context.user.UserContext;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
