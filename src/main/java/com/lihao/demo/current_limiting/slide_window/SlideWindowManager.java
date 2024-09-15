@@ -1,6 +1,6 @@
 package com.lihao.demo.current_limiting.slide_window;
 
-import com.lihao.demo.current_limiting.base.BaseManager;
+import com.lihao.demo.current_limiting.base.CurrentLimitingManager;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0
  */
 @Component
-public class SlideWindowManager implements BaseManager<String, SlideWindowDto> {
+public class SlideWindowManager implements CurrentLimitingManager<String, SlideWindowDto> {
     private final ConcurrentHashMap<String, SlideWindowDto> slideWindowMap = new ConcurrentHashMap<>();
     @Override
     public void create(String key, SlideWindowDto slideWindowDto){

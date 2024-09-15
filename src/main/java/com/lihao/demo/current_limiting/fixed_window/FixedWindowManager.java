@@ -1,6 +1,6 @@
 package com.lihao.demo.current_limiting.fixed_window;
 
-import com.lihao.demo.current_limiting.base.BaseManager;
+import com.lihao.demo.current_limiting.base.CurrentLimitingManager;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0
  */
 @Component
-public class FixedWindowManager implements BaseManager<String,FixedWindowDto> {
+public class FixedWindowManager implements CurrentLimitingManager<String,FixedWindowDto> {
     private final ConcurrentHashMap<String, FixedWindowDto> fixedWindowMap = new ConcurrentHashMap<>();
     @Override
     public void create(String key, FixedWindowDto fixedWindowDto){

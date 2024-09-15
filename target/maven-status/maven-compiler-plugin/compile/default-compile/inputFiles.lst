@@ -13,12 +13,12 @@ D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\ContextInfo.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\DefaultContext.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\UserContext.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\AbstractCurrentLimitingStrategy.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\BaseManager.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimiting.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimitingAspect.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimitingContainer.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimitingDTO.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimitingFactory.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimitingManager.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\DefaultStrategy.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\fixed_window\FixedWindowDto.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\fixed_window\FixedWindowManager.java

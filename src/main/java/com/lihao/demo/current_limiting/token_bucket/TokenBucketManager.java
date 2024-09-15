@@ -1,6 +1,6 @@
 package com.lihao.demo.current_limiting.token_bucket;
 
-import com.lihao.demo.current_limiting.base.BaseManager;
+import com.lihao.demo.current_limiting.base.CurrentLimitingManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Component
 @Slf4j
-public class TokenBucketManager implements BaseManager<String, TokenBucketDto> {
+public class TokenBucketManager implements CurrentLimitingManager<String, TokenBucketDto> {
     private final ConcurrentHashMap<String, TokenBucketDto> tokenBucketMap = new ConcurrentHashMap<>();
     @Override
     public void remove(String key) {

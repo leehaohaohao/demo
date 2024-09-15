@@ -1,10 +1,8 @@
 package com.lihao.demo.current_limiting.leaky_bucket;
 
-import com.lihao.demo.current_limiting.base.BaseManager;
+import com.lihao.demo.current_limiting.base.CurrentLimitingManager;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -15,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0
  */
 @Component
-public class LeakyBucketManager implements BaseManager<String, LeakyBucketDto> {
+public class LeakyBucketManager implements CurrentLimitingManager<String, LeakyBucketDto> {
     private final ConcurrentHashMap<String, LeakyBucketDto> leakyBucketMap = new ConcurrentHashMap<>();
     @Override
     public void create(String key, LeakyBucketDto dto) {
