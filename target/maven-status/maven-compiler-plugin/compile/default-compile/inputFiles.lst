@@ -5,8 +5,8 @@ D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\HandTrembling.jav
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\MonitorApiUsage.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\MonitorApiUsageAspect.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\entity\HandTremblingDto.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\context\exception\GlobalException.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\context\exception\GlobalExceptionHandler.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\context\exception\DemoException.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\context\exception\DemoExceptionProcessor.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\pack\ErrorConstants.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\pack\ResponsePack.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\ContextInfo.java

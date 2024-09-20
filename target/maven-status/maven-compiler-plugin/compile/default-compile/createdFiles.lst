@@ -9,10 +9,8 @@ com\lihao\demo\api_usage\entity\HandTremblingDto.class
 com\lihao\demo\api_usage\base\MonitorApiUsage.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowDto.class
 com\lihao\demo\current_limiting\base\CurrentLimitingFactory.class
-com\lihao\demo\context\exception\GlobalException.class
 com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketManager.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowManager.class
-com\lihao\demo\context\exception\GlobalExceptionHandler.class
 com\lihao\demo\api_usage\base\MonitorApiUsage$HandType.class
 com\lihao\demo\current_limiting\slide_window\SlideWindowManager.class
 com\lihao\demo\current_limiting\base\CurrentLimitingAspect.class
@@ -22,8 +20,10 @@ com\lihao\demo\api_usage\base\MonitorApiUsageAspect$1.class
 com\lihao\demo\current_limiting\base\CurrentLimitingDTO.class
 com\lihao\demo\context\pack\ResponsePack.class
 com\lihao\demo\api_usage\base\DefaultApiUsage.class
+com\lihao\demo\context\exception\DemoException.class
 com\lihao\demo\lock\LockAspect.class
 com\lihao\demo\current_limiting\base\CurrentLimiting.class
+com\lihao\demo\context\exception\DemoExceptionProcessor.class
 com\lihao\demo\current_limiting\base\CurrentLimiting$KeyType.class
 com\lihao\demo\api_usage\base\DefaultHandTrembling.class
 com\lihao\demo\current_limiting\token_bucket\TokenBucketManager.class
