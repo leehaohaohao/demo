@@ -48,7 +48,7 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/demo</altDeploymentRepository>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/maven</altDeploymentRepository>
                 </configuration>
             </plugin>
             <plugin>
@@ -72,7 +72,7 @@
                     <repositoryName>demo</repositoryName>
                     <message>Creating site for ${project.artifactId} ${project.version}</message>
                     <noJekyll>true</noJekyll>
-                    <outputDirectory>${project.build.directory}/demo</outputDirectory>
+                    <outputDirectory>${project.build.directory}/maven</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <merge>true</merge>
                     <includes>
