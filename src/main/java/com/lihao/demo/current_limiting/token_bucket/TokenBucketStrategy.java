@@ -11,11 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 令牌桶限流策略
@@ -44,14 +41,12 @@ public class TokenBucketStrategy extends AbstractCurrentLimitingStrategy<TokenBu
         //返回业务运行结果
         return joinPoint.proceed();
     }
-
     @Override
     protected boolean isLimit(Map<String, TokenBucketDto> tokenBucketDtoMap) {
         return tokenBucketDtoMap.keySet()
                 .stream()
                 .anyMatch(key -> !tokenBucketManager.tryAcquire(key, 1));
     }
-
     @Override
     protected void addLimit(Map<String, TokenBucketDto> tokenBucketDtoMap) {
         tokenBucketDtoMap.keySet().forEach(key->tokenBucketManager.deductionToken(key,1));

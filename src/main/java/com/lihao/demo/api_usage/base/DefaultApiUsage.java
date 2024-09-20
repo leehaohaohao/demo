@@ -20,7 +20,13 @@ public class DefaultApiUsage implements ApiUsage{
         String className = joinPoint.getTarget().getClass().getSimpleName();
         String methodName = joinPoint.getSignature().getName();
         String apiName = className+"."+methodName;
-        log.info("接口：{}，耗时：{}ms",apiName,responseTime);
+        // 获取方法参数
+        Object[] args = joinPoint.getArgs();
+        StringBuilder params = new StringBuilder();
+        for (Object arg : args) {
+            params.append(arg).append(" ");
+        }
+        log.debug("接口：{}，参数：{}，耗时：{}ms", apiName, params.toString().trim(), responseTime);
         return result;
     }
 }
