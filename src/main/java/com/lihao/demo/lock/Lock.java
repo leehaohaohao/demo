@@ -1,7 +1,5 @@
 package com.lihao.demo.lock;
 
-import org.springframework.data.annotation.Reference;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

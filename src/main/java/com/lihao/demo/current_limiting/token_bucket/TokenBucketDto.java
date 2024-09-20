@@ -1,7 +1,7 @@
 package com.lihao.demo.current_limiting.token_bucket;
 
 import com.lihao.demo.current_limiting.base.CurrentLimitingDTO;
-import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.context.exception.DemoException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
@@ -20,9 +20,9 @@ public class TokenBucketDto extends CurrentLimitingDTO {
     private final double refillRate; // 每秒补充的令牌数
     private double tokens; // 当前令牌数量
     private long lastRefillTime; // 上次补充令牌的时间
-    public TokenBucketDto(long capacity, double refillRate) throws GlobalException {
+    public TokenBucketDto(long capacity, double refillRate) throws DemoException {
         if(capacity <= 0 || refillRate <= 0){
-            throw new GlobalException("令牌桶参数错误");
+            throw new DemoException("令牌桶参数错误");
         }
         this.capacity = capacity;
         this.refillRate = refillRate;

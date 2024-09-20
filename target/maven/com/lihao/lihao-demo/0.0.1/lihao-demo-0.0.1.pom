@@ -8,13 +8,6 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <repositories>
-        <repository>
-            <id>github</id>
-            <name>leehaohaohao</name>
-            <url>https://raw.github.com/leehaohaohao/demo/master</url>
-        </repository>
-    </repositories>
     <groupId>com.lihao</groupId>
     <artifactId>lihao-demo</artifactId>
     <version>0.0.1</version>
@@ -55,7 +48,7 @@
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/demo</altDeploymentRepository>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/maven</altDeploymentRepository>
                 </configuration>
             </plugin>
             <plugin>
@@ -79,7 +72,7 @@
                     <repositoryName>demo</repositoryName>
                     <message>Creating site for ${project.artifactId} ${project.version}</message>
                     <noJekyll>true</noJekyll>
-                    <outputDirectory>${project.build.directory}/demo</outputDirectory>
+                    <outputDirectory>${project.build.directory}/maven</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <merge>true</merge>
                     <includes>

@@ -1,6 +1,6 @@
 package com.lihao.demo.current_limiting.leaky_bucket;
 
-import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.context.exception.DemoException;
 import com.lihao.demo.context.pack.ErrorConstants;
 import com.lihao.demo.current_limiting.base.AbstractCurrentLimitingStrategy;
 import com.lihao.demo.current_limiting.base.CurrentLimiting;
@@ -34,7 +34,7 @@ public class LeakyBucketStrategy extends AbstractCurrentLimitingStrategy<LeakyBu
             leakyBucketDtoMap.put(entry.getKey(), leakyBucketDto);
         }
         if(isLimit(leakyBucketDtoMap)){
-            throw new GlobalException(ErrorConstants.CURRENT_LIMITING_ERROR);
+            throw new DemoException(ErrorConstants.CURRENT_LIMITING_ERROR);
         }
         addLimit(leakyBucketDtoMap);
         return joinPoint.proceed();

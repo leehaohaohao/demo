@@ -4,7 +4,7 @@ import com.lihao.demo.context.pack.ErrorConstants;
 import com.lihao.demo.current_limiting.base.AbstractCurrentLimitingStrategy;
 import com.lihao.demo.current_limiting.base.CurrentLimiting;
 import com.lihao.demo.current_limiting.base.DefaultStrategy;
-import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.context.exception.DemoException;
 import com.lihao.demo.lock.Lock;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +35,7 @@ public class TokenBucketStrategy extends AbstractCurrentLimitingStrategy<TokenBu
             tokenBucketManager.create(entry.getKey(), tokenBucketDto);
         }
         if(isLimit(tokenBucketDtoMap)){
-            throw new GlobalException(ErrorConstants.CURRENT_LIMITING_ERROR);
+            throw new DemoException(ErrorConstants.CURRENT_LIMITING_ERROR);
         }
         addLimit(tokenBucketDtoMap);
         //返回业务运行结果

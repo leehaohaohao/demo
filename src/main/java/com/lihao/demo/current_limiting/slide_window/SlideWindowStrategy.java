@@ -1,6 +1,6 @@
 package com.lihao.demo.current_limiting.slide_window;
 
-import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.context.exception.DemoException;
 import com.lihao.demo.context.pack.ErrorConstants;
 import com.lihao.demo.current_limiting.base.AbstractCurrentLimitingStrategy;
 import com.lihao.demo.current_limiting.base.CurrentLimiting;
@@ -35,7 +35,7 @@ public class SlideWindowStrategy extends AbstractCurrentLimitingStrategy<SlideWi
             slideWindowDtoMap.put(entry.getKey(), slideWindowDto);
         }
         if(isLimit(slideWindowDtoMap)){
-            throw new GlobalException(ErrorConstants.CURRENT_LIMITING_ERROR);
+            throw new DemoException(ErrorConstants.CURRENT_LIMITING_ERROR);
         }
         addLimit(slideWindowDtoMap);
         return joinPoint.proceed();

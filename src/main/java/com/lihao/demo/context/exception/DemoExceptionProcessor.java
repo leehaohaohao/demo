@@ -5,9 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * @author lihao
+ */
 @RestControllerAdvice
 @Slf4j
-public class GlobalExceptionHandler {
+public class DemoExceptionProcessor {
     @ExceptionHandler(value = Exception.class)
     public ResponsePack<String> clasp(Exception e){
         log.error(String.valueOf(e));

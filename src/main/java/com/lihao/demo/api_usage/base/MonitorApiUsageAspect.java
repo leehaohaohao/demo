@@ -1,7 +1,7 @@
 package com.lihao.demo.api_usage.base;
 
 import com.lihao.demo.api_usage.entity.HandTremblingDto;
-import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.context.exception.DemoException;
 import com.lihao.demo.context.pack.ErrorConstants;
 import com.lihao.demo.context.user.ContextInfo;
 import com.lihao.demo.context.user.UserContext;
@@ -42,7 +42,7 @@ public class MonitorApiUsageAspect {
             //防抖
             handTrembling.add(handTremblingDto);
             if(!handTrembling.tryAcquire(handTremblingDto)){
-                throw new GlobalException(ErrorConstants.HAND_TREMBLING_ERROR);
+                throw new DemoException(ErrorConstants.HAND_TREMBLING_ERROR);
             }
         }
         return apiUsage.monitor(joinPoint,startTime);

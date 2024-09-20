@@ -1,6 +1,6 @@
 package com.lihao.demo.current_limiting.fixed_window;
 
-import com.lihao.demo.context.exception.GlobalException;
+import com.lihao.demo.context.exception.DemoException;
 import com.lihao.demo.context.pack.ErrorConstants;
 import com.lihao.demo.current_limiting.base.AbstractCurrentLimitingStrategy;
 import com.lihao.demo.current_limiting.base.CurrentLimiting;
@@ -33,7 +33,7 @@ public class FixedWindowStrategy extends AbstractCurrentLimitingStrategy<FixedWi
             fixedWindowManager.create(entry.getKey(), fixedWindowDto);
         }
         if(isLimit(fixedWindowDtoMap)){
-            throw new GlobalException(ErrorConstants.CURRENT_LIMITING_ERROR);
+            throw new DemoException(ErrorConstants.CURRENT_LIMITING_ERROR);
         }
         addLimit(fixedWindowDtoMap);
         return joinPoint.proceed();

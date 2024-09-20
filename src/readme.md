@@ -75,3 +75,12 @@ public class DemoApplication {
 
 }
 ```
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <name>leehaohaohao</name>
+        <url>https://raw.github.com/leehaohaohao/demo/master</url>
+    </repository>
+</repositories>
+```
