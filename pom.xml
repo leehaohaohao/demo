@@ -8,13 +8,6 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <repositories>
-        <repository>
-            <id>github</id>
-            <name>leehaohaohao</name>
-            <url>https://raw.github.com/leehaohaohao/demo/master</url>
-        </repository>
-    </repositories>
     <groupId>com.lihao</groupId>
     <artifactId>lihao-demo</artifactId>
     <version>0.0.1</version>
