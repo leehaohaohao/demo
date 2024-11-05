@@ -1,4 +1,3 @@
-com\lihao\demo\context\user\DefaultContext.class
 com\lihao\demo\current_limiting\slide_window\SlideWindowDto.class
 com\lihao\demo\api_usage\base\ApiUsage.class
 com\lihao\demo\api_usage\base\MonitorApiUsageAspect.class
@@ -10,10 +9,10 @@ com\lihao\demo\api_usage\base\MonitorApiUsage.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowDto.class
 com\lihao\demo\current_limiting\base\CurrentLimitingFactory.class
 com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketManager.class
+com\lihao\demo\context\user\UserContextProvider.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowManager.class
 com\lihao\demo\api_usage\base\MonitorApiUsage$HandType.class
 com\lihao\demo\current_limiting\slide_window\SlideWindowManager.class
-com\lihao\demo\api_usage\config\UserContextAutoConfiguration.class
 com\lihao\demo\current_limiting\base\CurrentLimitingAspect.class
 com\lihao\demo\current_limiting\base\CurrentLimitingContainer.class
 com\lihao\demo\current_limiting\token_bucket\TokenBucketStrategy.class
@@ -30,10 +29,7 @@ com\lihao\demo\current_limiting\token_bucket\TokenBucketManager.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowStrategy.class
 com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketStrategy.class
 com\lihao\demo\current_limiting\slide_window\SlideWindowStrategy.class
-com\lihao\demo\api_usage\config\UserContextProperties.class
-com\lihao\demo\context\user\ContextInfo.class
 com\lihao\demo\current_limiting\token_bucket\TokenBucketDto.class
-com\lihao\demo\context\user\UserContext.class
 com\lihao\demo\current_limiting\base\CurrentLimitingManager.class
 com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketDto.class
 com\lihao\demo\lock\Lock.class

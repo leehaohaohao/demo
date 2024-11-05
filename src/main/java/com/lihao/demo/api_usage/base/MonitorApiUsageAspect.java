@@ -41,7 +41,7 @@ public class MonitorApiUsageAspect {
             //防抖
             handTrembling.add(handTremblingDto);
             if(!handTrembling.tryAcquire(handTremblingDto)){
-                throw new DemoException(ErrorConstants.HAND_TREMBLING_ERROR);
+                throw new RuntimeException(ErrorConstants.HAND_TREMBLING_ERROR);
             }
         }
         return apiUsage.monitor(joinPoint,startTime);

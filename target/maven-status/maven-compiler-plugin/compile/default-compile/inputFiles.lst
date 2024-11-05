@@ -4,15 +4,11 @@ D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\DefaultHandTrembl
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\HandTrembling.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\MonitorApiUsage.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\base\MonitorApiUsageAspect.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\config\UserContextAutoConfiguration.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\config\UserContextProperties.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\api_usage\entity\HandTremblingDto.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\exception\DemoException.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\pack\ErrorConstants.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\context\pack\ResponsePack.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\ContextInfo.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\DefaultContext.java
-D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\UserContext.java
+D:\IDEProject\demo\src\main\java\com\lihao\demo\context\user\UserContextProvider.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\AbstractCurrentLimitingStrategy.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimiting.java
 D:\IDEProject\demo\src\main\java\com\lihao\demo\current_limiting\base\CurrentLimitingAspect.java
