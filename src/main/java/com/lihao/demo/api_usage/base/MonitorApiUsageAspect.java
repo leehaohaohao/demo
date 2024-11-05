@@ -3,8 +3,7 @@ package com.lihao.demo.api_usage.base;
 import com.lihao.demo.api_usage.entity.HandTremblingDto;
 import com.lihao.demo.context.exception.DemoException;
 import com.lihao.demo.context.pack.ErrorConstants;
-import com.lihao.demo.context.user.ContextInfo;
-import com.lihao.demo.context.user.UserContext;
+import com.lihao.demo.context.user.UserContextProvider;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -25,7 +24,7 @@ import java.lang.reflect.Method;
 @AllArgsConstructor
 public class MonitorApiUsageAspect {
     private final HandTrembling<HandTremblingDto> handTrembling;
-    private final UserContext<ContextInfo> userContext;
+    private final UserContextProvider userContextProvider;
     private final ApiUsage apiUsage;
     @Around("@annotation(com.lihao.demo.api_usage.base.MonitorApiUsage)")
     public Object monitorApiUsage(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -35,8 +34,8 @@ public class MonitorApiUsageAspect {
         if(monitorApiUsage.enableHandTrembling()){
             HandTremblingDto handTremblingDto = new HandTremblingDto(monitorApiUsage.handTime(),monitorApiUsage.handCount(), monitorApiUsage.unit());
             switch (monitorApiUsage.handType()){
-                case ID -> handTremblingDto.setPrefix(userContext.getUserId());
-                case IP -> handTremblingDto.setPrefix(userContext.getIp());
+                case ID -> handTremblingDto.setPrefix(userContextProvider.getUserId());
+                case IP -> handTremblingDto.setPrefix(userContextProvider.getIp());
                 case ALL -> handTremblingDto.setPrefix("ALL");
             }
             //防抖

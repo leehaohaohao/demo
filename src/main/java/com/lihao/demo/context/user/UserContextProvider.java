@@ -5,10 +5,7 @@ package com.lihao.demo.context.user;
  * &#064;date  2024/9/13
  * @since 1.0
  */
-public interface UserContext<T extends ContextInfo> {
-    T get();
-    void set(T info);
-    void remove();
+public interface UserContextProvider{
     String getUserId();
     String getIp();
 }

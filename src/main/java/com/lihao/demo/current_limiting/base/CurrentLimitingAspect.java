@@ -1,7 +1,6 @@
 package com.lihao.demo.current_limiting.base;
 
-import com.lihao.demo.context.user.ContextInfo;
-import com.lihao.demo.context.user.UserContext;
+import com.lihao.demo.context.user.UserContextProvider;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -23,7 +22,7 @@ import java.util.Map;
 @Component
 @AllArgsConstructor
 public class CurrentLimitingAspect {
-    private final UserContext<ContextInfo> userContext;
+    private final UserContextProvider userContextProvider;
     @Around("@annotation(com.lihao.demo.current_limiting.base.CurrentLimiting)")
     public Object currentLimiting(ProceedingJoinPoint joinPoint) throws Throwable {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
@@ -37,8 +36,8 @@ public class CurrentLimitingAspect {
             //限流注解可能多个 所以不为空要区分
             String prefix = currentLimiting.prefix().isEmpty() ? method.toGenericString() + ":index:" + i : currentLimiting.prefix();
             String key = switch (currentLimiting.keyType()) {
-                case ID -> userContext.getUserId();
-                case IP -> userContext.getIp();
+                case ID -> userContextProvider.getUserId();
+                case IP -> userContextProvider.getIp();
                 case ALL -> "ALL";
             };
             keyMap.put(prefix+":"+key,currentLimiting);
