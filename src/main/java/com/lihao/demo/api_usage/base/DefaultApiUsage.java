@@ -1,7 +1,9 @@
 package com.lihao.demo.api_usage.base;
 
+import com.lihao.demo.context.user.UserContextProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Component;
 /**
  * 默认监控接口实现
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
+@ConditionalOnMissingBean(ApiUsage.class)
 public class DefaultApiUsage implements ApiUsage{
     @Override
     public Object monitor(ProceedingJoinPoint joinPoint, long startTime) throws Throwable {
