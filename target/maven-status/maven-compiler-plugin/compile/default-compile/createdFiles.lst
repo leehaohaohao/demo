@@ -9,11 +9,13 @@ com\lihao\demo\api_usage\base\MonitorApiUsage.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowDto.class
 com\lihao\demo\current_limiting\base\CurrentLimitingFactory.class
 com\lihao\demo\current_limiting\leaky_bucket\LeakyBucketManager.class
+com\lihao\demo\Banner.class
 com\lihao\demo\context\user\UserContextProvider.class
 com\lihao\demo\current_limiting\fixed_window\FixedWindowManager.class
 com\lihao\demo\api_usage\base\MonitorApiUsage$HandType.class
 com\lihao\demo\current_limiting\slide_window\SlideWindowManager.class
 com\lihao\demo\current_limiting\base\CurrentLimitingAspect.class
+com\lihao\demo\BannerConfig.class
 com\lihao\demo\current_limiting\base\CurrentLimitingContainer.class
 com\lihao\demo\current_limiting\token_bucket\TokenBucketStrategy.class
 com\lihao\demo\api_usage\base\MonitorApiUsageAspect$1.class
